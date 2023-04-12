@@ -3,19 +3,13 @@
 
 # In[ ]:
 
-
+!pip install tensorflow
 import streamlit as st
 import numpy as np
 import tensorflow as tf
-from PIL import Image
-import tensorflow as tf
-import numpy as np
-from PIL import Image
 from numpy import zeros
 from numpy import ones
 from numpy.random import randint
-import tensorflow as tf
-from keras.optimizers import Adam
 from keras.initializers import RandomNormal
 from keras.models import Model
 from keras import Input
