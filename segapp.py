@@ -2,7 +2,6 @@
 # coding: utf-8
 
 # In[ ]:
-pip install tensorflow==2.12.0
 import streamlit as st
 import numpy as np
 import tensorflow as tf
