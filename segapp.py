@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[ ]:
-pip install tensorflow
+python3 -m pip install tensorflow
 import streamlit as st
 import numpy as np
 import tensorflow as tf
