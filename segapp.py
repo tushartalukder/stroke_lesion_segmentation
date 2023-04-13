@@ -150,8 +150,13 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 # Replace the MODEL_LINK with your Google Drive model link
 import gdown
 import subprocess
-subprocess.run(["gdown", "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view", "-O", "fmodel.h5"])
-subprocess.run(["gdown", "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view", "-O", "bmodel.h5"])
+
+if not os.path.isfile('fmodel.h5'):
+    subprocess.run(['curl --output fmodel.h5 "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view"'], shell=True)
+if not os.path.isfile('bmodel.h5'):
+    subprocess.run(['curl --output bmodel.h5 "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view"'], shell=True)
+# subprocess.run(["gdown", "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view", "-O", "fmodel.h5"])
+# subprocess.run(["gdown", "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view", "-O", "bmodel.h5"])
 # Replace MODEL_ID with the ID of your Google Drive file
 
 # fmodel = tf.keras.models.load_model(fore_model_path)
