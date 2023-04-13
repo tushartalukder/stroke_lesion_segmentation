@@ -154,8 +154,21 @@ import gdown
 fore_model_path = gdown.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view","lesion_model_000296.h5",quiet=False)
 back_model_path = gdown.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view","background_model_000296.h5",quiet=False)
 
-fmodel = tf.keras.models.load_model(fore_model_path)
-bmodel = tf.keras.models.load_model(back_model_path)    
+# fmodel = tf.keras.models.load_model(fore_model_path)
+# bmodel = tf.keras.models.load_model(back_model_path)    
+
+import subprocess
+if not os.path.isfile('model.h5'):
+    subprocess.run(['curl --output model.h5 fore_model_path'], shell=True)
+    
+fmodel = tf.keras.models.load_model('model.h5', compile=False)
+if not os.path.isfile('model.h5'):
+    subprocess.run(['curl --output model.h5 back_model_path'], shell=True)
+    
+bmodel = tf.keras.models.load_model('model.h5', compile=False)
+
+
+
 # fore_model_path = wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
 # back_model_path = wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
 
