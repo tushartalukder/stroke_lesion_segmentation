@@ -154,7 +154,7 @@ output1 = "lesion_model_000296.h5"
 gdown.download(url1, output1, quiet=False)
 url2 = "https://drive.google.com/uc?id=1WUoZ4f18ssh8v1CK5ItxMmnvZ8chi-Ln"
 output2 = "background_model_000296.h5"
-gdown.download(url1, output1, quiet=False)
+gdown.download(url2, output2, quiet=False)
 # import subprocess
 
 # if not os.path.isfile('fmodel.h5'):
