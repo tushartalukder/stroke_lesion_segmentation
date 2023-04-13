@@ -8,3 +8,4 @@ tensorflow
 tensorflow_intel
 wget
 gdown
+subprocess
