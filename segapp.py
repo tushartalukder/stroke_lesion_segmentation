@@ -167,7 +167,6 @@ if not os.path.isfile('bmodel.h5'):
 # bmodel = tf.keras.models.load_model(back_model_path)    
 
 
-
     
 fmodel = tf.keras.models.load_model('fmodel.h5')
     
