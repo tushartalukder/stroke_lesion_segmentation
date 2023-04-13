@@ -228,7 +228,7 @@ def main():
         st.image(image, caption='Uploaded Image', use_column_width=True)
 
         # Make a prediction and display the mask
-        mask = predict(image, model)
+        mask = predict(image, fmodel)
         st.image(mask, caption='Predicted Mask', use_column_width=True)
 
 if __name__ == '__main__':
