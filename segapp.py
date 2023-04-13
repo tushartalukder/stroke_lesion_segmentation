@@ -176,7 +176,7 @@ gdown.download(url2, output2, quiet=False)
     
 fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
     
-bmodel = tf.keras.models.load_model("background_model_000296.h5")
+# bmodel = tf.keras.models.load_model("background_model_000296.h5")
 
 
 
@@ -201,13 +201,13 @@ def preprocess_image(image):
 def predict(image, model):
     image = preprocess_image(image)
     fmask = fmodel.predict(image)
-    bmask = bmodel.predict(image)
+#     bmask = bmodel.predict(image)
     fmask = (fmask+1)/2
     fmask = np.squeeze(fmask, axis=0)
-    bmask = (1-bmask)/2
-    bmask = np.squeeze(bmask, axis=0)
-    mask = np.logical_or(fmask,bmask)
-    mask = (mask > 0.5).astype(np.uint8)*255 
+#     bmask = (1-bmask)/2
+#     bmask = np.squeeze(bmask, axis=0)
+#     mask = np.logical_or(fmask,bmask)
+    mask = (fmask > 0.5).astype(np.uint8)*255 
     return mask
 
 def main():
