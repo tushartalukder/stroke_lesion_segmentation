@@ -151,8 +151,8 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 import gdown
 
 # Replace MODEL_ID with the ID of your Google Drive file
-fore_model_path = gdown.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing","lesion_model_000296.h5",quiet=False)
-back_model_path = gdown.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link","background_model_000296.h5",quiet=False)
+fore_model_path = gdown.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view","lesion_model_000296.h5",quiet=False)
+back_model_path = gdown.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view","background_model_000296.h5",quiet=False)
 
 fmodel = tf.keras.models.load_model(fore_model_path)
 bmodel = tf.keras.models.load_model(back_model_path)    
