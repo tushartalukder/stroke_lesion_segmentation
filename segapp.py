@@ -149,13 +149,17 @@ import wget
 
 # Replace the MODEL_LINK with your Google Drive model link
 
+# fore_model_path = wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
+# back_model_path = wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
 
+# fmodel = tf.keras.models.load_model(fore_model_path)
+# bmodel = tf.keras.models.load_model(back_model_path)    
 # Download the model file using wget
-fore_model_path = wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
-back_model_path = wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
+wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
+wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
 
-fmodel = tf.keras.models.load_model(fore_model_path)
-bmodel = tf.keras.models.load_model(back_model_path)    
+fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
+bmodel = tf.keras.models.load_model("background_model_000296.h5")    
 
 def preprocess_image(image):
     image = image.resize((256, 256))
