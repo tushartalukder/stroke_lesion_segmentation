@@ -152,9 +152,13 @@ import gdown
 import subprocess
 
 if not os.path.isfile('fmodel.h5'):
-    subprocess.run(['curl --output fmodel.h5 "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view"'], shell=True)
+    subprocess.run(['gdown', 'https://drive.google.com/uc?id=1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ', '-O', 'fmodel.h5'])
 if not os.path.isfile('bmodel.h5'):
-    subprocess.run(['curl --output bmodel.h5 "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view"'], shell=True)
+    subprocess.run(['gdown', 'https://drive.google.com/uc?id=15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9', '-O', 'bmodel.h5'])
+# if not os.path.isfile('fmodel.h5'):
+#     subprocess.run(['curl --output fmodel.h5 "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view"'], shell=True)
+# if not os.path.isfile('bmodel.h5'):
+#     subprocess.run(['curl --output bmodel.h5 "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view"'], shell=True)
 # subprocess.run(["gdown", "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view", "-O", "fmodel.h5"])
 # subprocess.run(["gdown", "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view", "-O", "bmodel.h5"])
 # Replace MODEL_ID with the ID of your Google Drive file
