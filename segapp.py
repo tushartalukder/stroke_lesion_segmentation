@@ -191,7 +191,6 @@ bmodel = tf.keras.models.load_model("background_model_000296.h5")
 
 # fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
 # bmodel = tf.keras.models.load_model("background_model_000296.h5")    
-
 def preprocess_image(image):
     image = image.resize((256, 256))
     image = np.array(image)
