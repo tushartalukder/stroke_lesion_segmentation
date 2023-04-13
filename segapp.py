@@ -152,9 +152,9 @@ import wget
 import subprocess
 
 if not os.path.isfile('fmodel.h5'):
-    subprocess.run(['wget','-O', 'fmodel.h5'],'https://drive.google.com/uc?export=download&id=1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ')
+    subprocess.run(['wget','-O', 'fmodel.h5','https://drive.google.com/uc?export=download&id=1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ'])
 if not os.path.isfile('bmodel.h5'):
-    subprocess.run(['wget', '-O', 'bmodel.h5'] ,'https://drive.google.com/uc?export=download&id=15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9')
+    subprocess.run(['wget', '-O', 'bmodel.h5' ,'https://drive.google.com/uc?export=download&id=15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9'])
 # if not os.path.isfile('fmodel.h5'):
 #     subprocess.run(['curl --output fmodel.h5 "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view"'], shell=True)
 # if not os.path.isfile('bmodel.h5'):
