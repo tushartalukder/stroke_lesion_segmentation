@@ -145,21 +145,28 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 # with CustomObjectScope({'DWT': DWT}):
 
 
-import wget
+# import wget
 
 # Replace the MODEL_LINK with your Google Drive model link
+import gdown
 
+# Replace MODEL_ID with the ID of your Google Drive file
+fore_model_path = gdown.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing","lesion_model_000296.h5",quiet=False)
+back_model_path = gdown.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link","background_model_000296.h5",quiet=False)
+
+fmodel = tf.keras.models.load_model(fore_model_path)
+bmodel = tf.keras.models.load_model(back_model_path)    
 # fore_model_path = wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
 # back_model_path = wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
 
 # fmodel = tf.keras.models.load_model(fore_model_path)
 # bmodel = tf.keras.models.load_model(back_model_path)    
 # Download the model file using wget
-wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
-wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
+# wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
+# wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
 
-fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
-bmodel = tf.keras.models.load_model("background_model_000296.h5")    
+# fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
+# bmodel = tf.keras.models.load_model("background_model_000296.h5")    
 
 def preprocess_image(image):
     image = image.resize((256, 256))
