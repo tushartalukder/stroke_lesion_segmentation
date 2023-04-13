@@ -7,3 +7,4 @@ PyWavelets==1.4.1
 tensorflow
 tensorflow_intel
 wget
+gdown
