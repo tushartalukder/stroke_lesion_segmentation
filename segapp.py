@@ -148,30 +148,30 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 # import wget
 
 # # Replace the MODEL_LINK with your Google Drive model link
-# import gdown
-# url1 = "https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw"
-# output1 = "lesion_model_000296.h5"
-# gdown.download(url1, output1, quiet=False)
+import gdown
+url1 = "https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw"
+output1 = "lesion_model_000296.h5"
+gdown.download(url1, output1, quiet=False)
 # url2 = "https://drive.google.com/uc?id=1WUoZ4f18ssh8v1CK5ItxMmnvZ8chi-Ln"
 # output2 = "background_model_000296.h5"
 # gdown.download(url2, output2, quiet=False)
 # import subprocess
-import gd_download
-def load_model():
+# import gd_download
+# def load_model():
 
-    save_dest = tf.constant('model')
-    tf.io.gfile.makedirs(save_dest)
+#     save_dest = tf.constant('model')
+#     tf.io.gfile.makedirs(save_dest)
     
-    f_checkpoint = tf.constant("model/fmodel.h5")
+#     f_checkpoint = tf.constant("model/fmodel.h5")
 
-    if not tf.io.gfile.exists(f_checkpoint):
-        with tf.compat.v1.Session() as sess:
-            from gd_download import download_file_from_google_drive
-            download_file_from_google_drive("https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw", f_checkpoint)
+#     if not tf.io.gfile.exists(f_checkpoint):
+#         with tf.compat.v1.Session() as sess:
+#             from gd_download import download_file_from_google_drive
+#             download_file_from_google_drive("https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw", f_checkpoint)
     
-    model = tf.keras.models.load_model(f_checkpoint)
-    model.compile()
-    return model
+#     model = tf.keras.models.load_model(f_checkpoint)
+#     model.compile()
+#     return model
 # if not os.path.isfile('fmodel.h5'):
 #     subprocess.run(['wget','-O', 'fmodel.h5','https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw'])
 # if not os.path.isfile('bmodel.h5'):
@@ -189,7 +189,7 @@ def load_model():
 
 
     
-# fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
+fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
     
 # bmodel = tf.keras.models.load_model("background_model_000296.h5")
 
@@ -231,7 +231,7 @@ def main():
     st.markdown("This app uses a deep learning model to perform image segmentation.")
 
     # Load the model
-    model = load_model()
+#     model = load_model()
 
     # Create a file uploader
     uploaded_file = st.file_uploader("Choose an image...", type=['jpg', 'jpeg', 'png'])
