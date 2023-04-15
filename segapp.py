@@ -156,7 +156,7 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 # output2 = "background_model_000296.h5"
 # gdown.download(url2, output2, quiet=False)
 # import subprocess
-
+import gd_download
 def load_model():
 
     save_dest = tf.constant('model')
@@ -166,7 +166,7 @@ def load_model():
 
     if not tf.io.gfile.exists(f_checkpoint):
         with tf.compat.v1.Session() as sess:
-            from GD_download import download_file_from_google_drive
+            from gd_download import download_file_from_google_drive
             download_file_from_google_drive("https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw", f_checkpoint)
     
     model = tf.keras.models.load_model(f_checkpoint)
