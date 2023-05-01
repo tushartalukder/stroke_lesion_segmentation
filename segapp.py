@@ -227,8 +227,8 @@ def predict(image, model):
 
 def main():
     # Set the app title and description
-    st.title("Image Segmentation App")
-    st.markdown("This app uses a deep learning model to perform image segmentation.")
+    st.title("Brain Hemorrhage Lesion Segmenter from CT Images")
+    st.markdown("This app uses a deep learning model to perform brain hemorrhage lesion segmentation.")
 
     # Load the model
 #     model = load_model()
@@ -244,7 +244,8 @@ def main():
 
         # Make a prediction and display the mask
         mask = predict(image, fmodel)
-        st.image(mask, caption='Predicted Mask', use_column_width=True)
+        out =  image *0.3 + mask *0.7
+        st.image(out, caption='Segmentated Lesion', use_column_width=True)
 
 if __name__ == '__main__':
     main()
