@@ -151,7 +151,8 @@ tf.keras.utils.get_custom_objects().update({'DWT': DWT})
 import gdown
 url1 = "https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw"
 output1 = "lesion_model_000296.h5"
-gdown.download(url1, output1, quiet=False)
+if not os.path.exists("lesion_model_000296.h5"):
+    gdown.download(url1, output1, quiet=False)
 # url2 = "https://drive.google.com/uc?id=1WUoZ4f18ssh8v1CK5ItxMmnvZ8chi-Ln"
 # output2 = "background_model_000296.h5"
 # gdown.download(url2, output2, quiet=False)
