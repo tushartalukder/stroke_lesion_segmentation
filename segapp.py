@@ -30,7 +30,7 @@ from keras.utils.vis_utils import plot_model
 from keras import models, layers
 from tensorflow.keras import backend as K
 import pywt
-
+from numpy import asarray
 from tensorflow.keras.utils import CustomObjectScope
 @st.cache(allow_output_mutation=True)
 class DWT(layers.Layer):
@@ -244,8 +244,8 @@ def main():
 
         # Make a prediction and display the mask
         mask = predict(image, fmodel)
-        out =  image *0.3 + mask *0.7
-        st.image(out, caption='Segmentated Lesion', use_column_width=True)
+        out =  np.array(image) *0.3 + np.array(mask) *0.7
+        st.image(asarray(out), caption='Segmentated Lesion', use_column_width=True)
 
 if __name__ == '__main__':
     main()
