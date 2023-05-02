@@ -245,7 +245,6 @@ def main():
 
         # Make a prediction and display the mask
         mask = predict(image, fmodel)
-#         out =  np.array(image) *0.3 + np.array(mask) *0.6
         st.image(mask, caption='Segmentated Lesion', use_column_width=True)
 
 if __name__ == '__main__':
