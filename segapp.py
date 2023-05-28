@@ -216,6 +216,7 @@ def preprocess_image(image):
 
 def predict(image, model):
     image = preprocess_image(image)
+    image = numpy.reshape(image,[1,256,256,3])
     fmask = fmodel.predict(image)
 #     bmask = bmodel.predict(image)
     fmask = (fmask+1)/2
