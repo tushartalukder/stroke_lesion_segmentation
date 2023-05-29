@@ -22,6 +22,7 @@ from keras.utils import plot_model
 import numpy
 from PIL import Image, ImageOps
 import os
+from keras.preprocessing.image import load_img
 from keras.layers import Input, Conv2D, MaxPooling2D, Conv2DTranspose, concatenate, BatchNormalization, Activation, add
 from keras.models import Model, model_from_json
 from keras.optimizers import Adam
@@ -211,7 +212,7 @@ def preprocess_image(image):
 #     image = tf.image.grayscale_to_rgb(image)
 
     image = np.array(image)
-    image = np.array([image,image,image])
+#     image = np.array([image,image,image])
     image = (image.astype('float32')-127.5) / 127.5
     image = np.expand_dims(image, axis=0)
     #     image = tf.reshape(image,[1,256,256,3])
@@ -244,7 +245,8 @@ def main():
     # Check if an image is uploaded
     if uploaded_file is not None:
         # Read the image and display it
-        image = Image.open(uploaded_file)
+#         image = Image.open(uploaded_file)
+        image = load_img(image)
         st.image(image, caption='Uploaded Image', use_column_width=True)
 
         # Make a prediction and display the mask
