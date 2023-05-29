@@ -246,7 +246,7 @@ def main():
     if uploaded_file is not None:
         # Read the image and display it
 #         image = Image.open(uploaded_file)
-        image = load_img(image)
+        image = load_img(uploaded_file)
         st.image(image, caption='Uploaded Image', use_column_width=True)
 
         # Make a prediction and display the mask
