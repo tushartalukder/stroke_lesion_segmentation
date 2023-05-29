@@ -22,7 +22,7 @@ from keras.utils import plot_model
 import numpy
 from PIL import Image, ImageOps
 import os
-from keras.preprocessing.image import load_img
+from tensorflow.keras.preprocessing.image import load_img
 from keras.layers import Input, Conv2D, MaxPooling2D, Conv2DTranspose, concatenate, BatchNormalization, Activation, add
 from keras.models import Model, model_from_json
 from keras.optimizers import Adam
