@@ -211,7 +211,7 @@ def preprocess_image(image):
 #     image = tf.image.grayscale_to_rgb(image)
 
     image = np.array(image)
-    image = np.array(zip(image,image,image))
+    image = np.array([image,image,image])
     image = (image.astype('float32')-127.5) / 127.5
     image = np.expand_dims(image, axis=0)
     #     image = tf.reshape(image,[1,256,256,3])
