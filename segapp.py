@@ -249,7 +249,7 @@ def main():
 
         # Make a prediction and display the mask
         mask = predict(image, fmodel)
-        st.image(mask, caption='Segmentated Lesion', use_column_width=True)
+        st.image(mask, caption='Segmentated Lesion', use_column_width=False)
 
 if __name__ == '__main__':
     main()
