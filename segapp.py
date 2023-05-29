@@ -208,16 +208,18 @@ fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
 # fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
 # bmodel = tf.keras.models.load_model("background_model_000296.h5")    
 def preprocess_image(image):
-    image = tf.image.grayscale_to_rgb(image)
-    image = tf.reshape(image,[1,256,256,3])
+#     image = tf.image.grayscale_to_rgb(image)
+
     image = np.array(image)
+    image = [image,image,image]
     image = (image.astype('float32')-127.5) / 127.5
     image = np.expand_dims(image, axis=0)
+    #     image = tf.reshape(image,[1,256,256,3])
     return image
 
 def predict(image, model):
     image = preprocess_image(image)
-#     image = tf.resize(image,[256,256])
+    image = tf.reshape(image,[1,256,256,3])
     fmask = fmodel.predict(image)
 #     bmask = bmodel.predict(image)
     fmask = (fmask+1)/2
