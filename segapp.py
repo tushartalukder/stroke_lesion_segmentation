@@ -228,7 +228,7 @@ def predict(image, model):
 #     bmask = np.squeeze(bmask, axis=0)
 #     mask = np.logical_or(fmask,bmask)
     mask = (fmask > 0.5).astype(np.uint8)*255 
-    return tf.reshape(mask,[256,256,3])
+    return np.reshape(mask,[256,256,3])
 
 def main():
     # Set the app title and description
