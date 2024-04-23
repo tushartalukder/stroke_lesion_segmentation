@@ -154,65 +154,11 @@ url1 = "https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw"
 output1 = "lesion_model_000296.h5"
 if not os.path.exists("lesion_model_000296.h5"):
     gdown.download(url1, output1, quiet=False)
-# url2 = "https://drive.google.com/uc?id=1WUoZ4f18ssh8v1CK5ItxMmnvZ8chi-Ln"
-# output2 = "background_model_000296.h5"
-# gdown.download(url2, output2, quiet=False)
-# import subprocess
-# import gd_download
-# def load_model():
-
-#     save_dest = tf.constant('model')
-#     tf.io.gfile.makedirs(save_dest)
-    
-#     f_checkpoint = tf.constant("model/fmodel.h5")
-
-#     if not tf.io.gfile.exists(f_checkpoint):
-#         with tf.compat.v1.Session() as sess:
-#             from gd_download import download_file_from_google_drive
-#             download_file_from_google_drive("https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw", f_checkpoint)
-    
-#     model = tf.keras.models.load_model(f_checkpoint)
-#     model.compile()
-#     return model
-# if not os.path.isfile('fmodel.h5'):
-#     subprocess.run(['wget','-O', 'fmodel.h5','https://drive.google.com/uc?id=1Lx9rVKdBtKVC2Iu0jyBCm2V4ol0FJ9iw'])
-# if not os.path.isfile('bmodel.h5'):
-#     subprocess.run(['wget', '-O', 'bmodel.h5' ,'https://drive.google.com/uc?id=1WUoZ4f18ssh8v1CK5ItxMmnvZ8chi-Ln'])
-# if not os.path.isfile('fmodel.h5'):
-#     subprocess.run(['curl --output fmodel.h5 "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view"'], shell=True)
-# if not os.path.isfile('bmodel.h5'):
-#     subprocess.run(['curl --output bmodel.h5 "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view"'], shell=True)
-# subprocess.run(["gdown", "https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view", "-O", "fmodel.h5"])
-# subprocess.run(["gdown", "https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view", "-O", "bmodel.h5"])
-# Replace MODEL_ID with the ID of your Google Drive file
-
-# fmodel = tf.keras.models.load_model(fore_model_path)
-# bmodel = tf.keras.models.load_model(back_model_path)    
-
-
     
 fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
     
-# bmodel = tf.keras.models.load_model("background_model_000296.h5")
-
-
-
-# fore_model_path = wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
-# back_model_path = wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
-
-# fmodel = tf.keras.models.load_model(fore_model_path)
-# bmodel = tf.keras.models.load_model(back_model_path)    
-# Download the model file using wget
-# wget.download("https://drive.google.com/file/d/1nC5HdXt7mY-i7tDUP14GlksjTNfhp4eJ/view?usp=sharing",out="lesion_model_000296.h5")
-# wget.download("https://drive.google.com/file/d/15Gk_JrkyVPPK9cTVLd6nBK561iDUjie9/view?usp=share_link",out="background_model_000296.h5")
-
-# fmodel = tf.keras.models.load_model("lesion_model_000296.h5")
-# bmodel = tf.keras.models.load_model("background_model_000296.h5")    
 def preprocess_image(image):
-#     image = tf.image.grayscale_to_rgb(image)
-
     image = np.array(image)
-#     image = np.array([image,image,image])
     image = (image.astype('float32')-127.5) / 127.5
     image = np.expand_dims(image, axis=0)
     #     image = tf.reshape(image,[1,256,256,3])
@@ -220,14 +166,11 @@ def preprocess_image(image):
 
 def predict(image, model):
     image = preprocess_image(image)
+    image = tf.resize(image,(256,256))
     image = tf.reshape(image,[1,256,256,3])
     fmask = fmodel.predict(image)
-#     bmask = bmodel.predict(image)
     fmask = (fmask+1)/2
     fmask = np.squeeze(fmask, axis=0)
-#     bmask = (1-bmask)/2
-#     bmask = np.squeeze(bmask, axis=0)
-#     mask = np.logical_or(fmask,bmask)
     mask = (fmask > 0.5).astype(np.uint8)*255 
     return np.reshape(mask,[256,256,3])
 
